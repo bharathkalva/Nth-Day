@@ -1,54 +1,58 @@
 package com.example.bharath.nthday;
 
-import android.provider.ContactsContract;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.icu.util.Calendar;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.CalendarView;
+import android.view.View;
+import android.widget.DatePicker;
 import android.widget.ImageButton;
-import android.widget.Toast;
+import android.widget.TextView;
+
 
 public class MainActivity extends AppCompatActivity {
+    protected static TextView displayCurrentTime;
     ImageButton Calender1;
     ImageButton Calender2;
-    CalendarView calendar;
-    
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Calender1 = (ImageButton)findViewById(R.id.IbCalender);
         Calender2 = (ImageButton)findViewById(R.id.IbCalender2);
-        initializeCalendar();
-    }
-
-    public void initializeCalendar() {
-        calendar = (CalendarView) findViewById(R.id.calendar);
-        // sets whether to show the week number.
-        calendar.setShowWeekNumber(false);
-        // sets the first day of week according to Calendar.
-        // here we set Monday as the first day of the Calendar
-        calendar.setFirstDayOfWeek(2);
-        //The background color for the selected week.
-        calendar.setSelectedWeekBackgroundColor(getResources().getColor(R.color.green));
-        //sets the color for the dates of an unfocused month.
-        calendar.setUnfocusedMonthDateColor(getResources().getColor(R.color.transparent));
-        //sets the color for the separator line between weeks.
-        calendar.setWeekSeparatorLineColor(getResources().getColor(R.color.transparent));
-        //sets the color for the vertical bar shown at the beginning and at the end of the selected date.
-        calendar.setSelectedDateVerticalBar(R.color.darkgreen);
-        //sets the listener to be notified upon selected date change.
-        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-                    //show the selected date as a toast
-           @Override
-            public void onSelectedDayChange(CalendarView view, int year, int month, int day) {
-                Toast.makeText(getApplicationContext(), day + "/" + month + "/" + year, Toast.LENGTH_LONG).show();
+        assert Calender1 != null;
+        assert Calender2 != null;
+        Calender1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerFragment mDatePicker = new DatePickerFragment();
+                mDatePicker.show(getSupportFragmentManager(), "Select date");
             }
         });
-
+        Calender2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerFragment mDatePicker = new DatePickerFragment();
+                mDatePicker.show(getSupportFragmentManager(), "Select date");
+            }
+        });
     }
-
-
-
-
+    public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+        @RequiresApi(api = Build.VERSION_CODES.N)
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+            return new DatePickerDialog(getActivity(), this, year, month, day);
+        }
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            displayCurrentTime.setText("Selected date: " + String.valueOf(year) + " - " + String.valueOf(month) + " - " + String.valueOf(day));
+        }
+    }
 }
