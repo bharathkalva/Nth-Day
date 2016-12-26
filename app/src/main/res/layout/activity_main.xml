@@ -12,67 +12,111 @@
     tools:context="com.example.bharath.nthday.MainActivity">
     <!--/* start using svg themes*/-->
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="200">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10"
             android:text="Today's Date/Date of Birth"
             android:id="@+id/tVTodaysDate"
+            android:gravity="bottom"
             android:textColor="@color/textColour"
             android:textSize="20sp"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:alpha="0.3"></LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:alpha="1"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
             android:weightSum="100">
             <TextView
                 android:layout_width="0dp"
+                android:id="@+id/tvDate1"
+                android:gravity="center_vertical"
                 android:layout_height="match_parent"
                 android:textColor="#FFFFFF"
-                android:text="22-12-2016"
+                android:text="dd-mm-yyyy"
                 android:layout_weight="90"
-                android:textSize="20sp"/>
+                android:textSize="25sp"/>
             <ImageButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="10"
+                android:scaleType="centerInside"
+                android:scaleX="1"
+                android:scaleY="1"
                 android:background="@drawable/calendar_icon"
                 android:id="@+id/IbCalender"/>
         </LinearLayout>
+        </FrameLayout>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Date of Birth"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:text="No of Days"
             android:id="@+id/tVBirthday"
+            android:gravity="bottom"
             android:textColor="@color/textColour"
             android:textSize="20sp"/>
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:alpha="1"
-            android:orientation="horizontal"
-            android:weightSum="100">
-            <TextView
-                android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="15">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:alpha="0.3"></LinearLayout>
+            <EditText
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textColor="#FFFFFF"
-                android:text="22-12-2016"
-                android:layout_weight="90"
+                android:id="@+id/tvDate2"
+                android:layout_gravity="bottom"
+                android:hint="Enter the Days"
                 android:textSize="20sp"/>
-            <ImageButton
+        </FrameLayout>
+       <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:orientation="horizontal"
+            android:weightSum="100">
+            <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="10"
-                android:background="@drawable/calendar_icon"
-                android:id="@+id/IbCalender2"/>
+                android:layout_weight="50"
+                android:text="Calculate"
+                android:background="@color/colorAccent"
+                android:textColor="@color/colorBlack"
+                android:textAllCaps="false"
+                android:id="@+id/btCalculate"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="50"
+                android:text="Clear"
+                android:background="@color/colorAccent"
+                android:textColor="@color/colorBlack"
+                android:textAllCaps="false"
+                android:id="@+id/btClear"/>
+
         </LinearLayout>
 
-
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="0dp"
+             android:layout_weight="120"></LinearLayout>
     </LinearLayout>
 </ScrollView>
