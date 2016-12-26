@@ -82,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textColor="#FFFFFF"
-                android:id="@+id/tvDate2"
+                android:id="@+id/eTDate2"
                 android:layout_gravity="bottom"
                 android:hint="Enter the Days"
                 android:textSize="20sp"/>
