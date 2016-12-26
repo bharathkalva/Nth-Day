@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
     protected static TextView displayCurrentTime;
     ImageButton Calender1;
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     Button Calculate,Clear;
     int Days;
     EditText NoDays;
-    int Date=1,Month=1,Year=2000;
+    static int Date,Month,Year;
     int[] Months = {31,28,31,30,31,30,31,31,30,31,30,31};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Calender1 = (ImageButton)findViewById(R.id.IbCalender);
         Date1 = (TextView)findViewById(R.id.tvDate1);
+        displayCurrentTime = (TextView)findViewById(R.id.tvDate1);
         Calculate = (Button)findViewById(R.id.btCalculate);
         Clear = (Button)findViewById(R.id.btClear);
         NoDays = (EditText)findViewById(R.id.eTDate2);
@@ -78,10 +81,13 @@ public class MainActivity extends AppCompatActivity {
             int year = c.get(Calendar.YEAR);
             int month = c.get(Calendar.MONTH);
             int day = c.get(Calendar.DAY_OF_MONTH);
+            Date = day;
+            Month = month;
+            Year = year;
             return new DatePickerDialog(getActivity(), this, year, month, day);
         }
         public void onDateSet(DatePicker view, int year, int month, int day) {
-           // displayCurrentTime.setText("Selected date: " + String.valueOf(year) + " - " + String.valueOf(month) + " - " + String.valueOf(day));
+           displayCurrentTime.setText(String.valueOf(day) + " - " + String.valueOf(month) + " - " + String.valueOf(year));
         }
     }
 }

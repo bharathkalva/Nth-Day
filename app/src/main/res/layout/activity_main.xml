@@ -29,7 +29,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="10">
+            android:layout_weight="12">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -53,9 +53,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="10"
-                android:scaleType="centerInside"
-                android:scaleX="1"
-                android:scaleY="1"
                 android:background="@drawable/calendar_icon"
                 android:id="@+id/IbCalender"/>
         </LinearLayout>
@@ -84,9 +81,15 @@
                 android:textColor="#FFFFFF"
                 android:id="@+id/eTDate2"
                 android:layout_gravity="bottom"
+                android:inputType="number"
+                android:backgroundTint="@color/transparent"
                 android:hint="Enter the Days"
                 android:textSize="20sp"/>
         </FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"></LinearLayout>
        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -96,27 +99,25 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="50"
+                android:layout_weight="49"
                 android:text="Calculate"
                 android:background="@color/colorAccent"
                 android:textColor="@color/colorBlack"
                 android:textAllCaps="false"
                 android:id="@+id/btCalculate"/>
+           <LinearLayout
+               android:layout_width="0dp"
+               android:layout_height="match_parent"
+               android:layout_weight="2"></LinearLayout>
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="50"
+                android:layout_weight="49"
                 android:text="Clear"
                 android:background="@color/colorAccent"
                 android:textColor="@color/colorBlack"
                 android:textAllCaps="false"
                 android:id="@+id/btClear"/>
-
         </LinearLayout>
-
-         <LinearLayout
-             android:layout_width="match_parent"
-             android:layout_height="0dp"
-             android:layout_weight="120"></LinearLayout>
     </LinearLayout>
 </ScrollView>
